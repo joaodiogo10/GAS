@@ -1,6 +1,5 @@
 const pongCtx = pongCanvas.getContext('2d')
 
-
 const player1 = {
     score: 0
 }
@@ -17,7 +16,6 @@ const ballStartPosition = {
     dy: 5
 }
 
-var ball = structuredClone(ballStartPosition)
 
 const paddleHeight = 100
 const paddleWidth = 10
@@ -44,6 +42,9 @@ const keys = {
 }
 
 
+let ball = structuredClone(ballStartPosition)
+let lastWinner = null
+
 document.addEventListener('keydown', (e) => {
     if (keys.hasOwnProperty(e.key)) {
         keys[e.key] = true
@@ -58,6 +59,10 @@ document.addEventListener('keyup', (e) => {
 
 function restartGame() {
     ball = structuredClone(ballStartPosition)
+
+    if (lastWinner === player1) {
+        ball.dx *= -1
+    }
 }
 
 function drawBall() {
@@ -124,6 +129,7 @@ function run() {
     //collision with left wall
     else if (ball.x - ball.radius < 0) {
         ball.dx *= -1
+        lastWinner = player1;
         player1.score += 1
         scorePlayer1.innerText = player1.score
         restartGame()
@@ -131,6 +137,7 @@ function run() {
     //collision with right wall 
     else if (ball.x + ball.radius > pongCanvas.width) {
         ball.dx *= -1
+        lastWinner = player2;
         player2.score += 1
         scorePlayer2.innerText = player2.score
         restartGame()

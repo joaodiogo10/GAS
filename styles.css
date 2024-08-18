@@ -1,17 +1,28 @@
 body {
-    background-color: #000; /* Set the background color of the main window to black */
+    background-color: #000;
+    /* Set the background color of the main window to black */
 }
 
 .thumbnailMenu {
-    display: grid; /* Enable grid for the container */
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px; /* Space between rectangles */
+    gap: 30px;
+}
+
+.thumbnailMenu img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .thumbnail {
-    width: 300px;           /* Set the width of the rectangle */
-    height: 150px;          /* Set the height of the rectangle */
-    background-color: #000; /* Set the background color */
-    border: 2px solid #fff; /* Optional: Add a border */
-    margin: 20px;          /* Optional: Add some space around the rectangle */
+    display: flex;
+    width: 400px;
+    height: 200px;
+    background-color: #000;
+    border: 2px solid #fff;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+
 }
